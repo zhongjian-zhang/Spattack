@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 
 
-class signAtkClient(nn.Module):
+class Spattack_O(nn.Module):
     def __init__(self, train_ind, test_ind, m_item, args):
         super().__init__()
         self.args = args
@@ -37,7 +37,7 @@ class signAtkClient(nn.Module):
         return None, None, None, None
 
 
-class sameValueAtkClient(nn.Module):
+class Spattack_L(nn.Module):
     def __init__(self, train_ind, test_ind, m_item, args):
         super().__init__()
         self.args = args

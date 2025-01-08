@@ -1,1 +1,1 @@
-from .FedMFAttack import signAtkClient, sameValueAtkClient
+from .FedMFAttack import Spattack_O, Spattack_L

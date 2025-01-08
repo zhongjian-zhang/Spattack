@@ -81,6 +81,8 @@ class FedRecServer(nn.Module):
             client = clients[idx]
             items = client.sample_items(max_item_count, self.args.items_popularity)
             malicious_item[items] += 1
+
+        assert np.all(malicious_item > 0), "malicious_item contains zero, leading to divide by zero error!"
         scale = torch.tensor(1 / malicious_item, dtype=torch.float32).to(self.args.device).unsqueeze(1)
         scale_ = torch.where(torch.isinf(scale), torch.full_like(scale, 0), scale)
         return scale_

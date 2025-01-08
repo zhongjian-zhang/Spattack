@@ -24,7 +24,7 @@ def main():
     clients = [FedRecClient(train_ind, test_ind, m_item, args).to(args.device) for train_ind, test_ind in
                zip(all_train_ind, all_test_ind)]
     malicious_clients_limit = int(len(clients) * args.clients_limit)
-    assert args.attack in ["signAtkClient", "sameValueAtkClient"]
+    assert args.attack in ["Spattack_O", "Spattack_L"]
     attack_client = getattr(__import__("Attack"), args.attack)
     print(f"Benign clients number: {len(clients)}")
     clients.extend(attack_client(None, [], m_item, args).to(args.device) for _ in range(malicious_clients_limit))
